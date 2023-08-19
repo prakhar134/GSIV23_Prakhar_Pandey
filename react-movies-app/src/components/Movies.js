@@ -2,10 +2,14 @@ import React, { useEffect } from 'react'
 import MovieCard from './MovieCard'
 import "./Movies.css"
 
-const Movies = ({movies, page, setPage, totalPages}) => {
+const Movies = ({movies, page, setPage, totalPages, searchText, searchMoviePage, setSearchMoviePage}) => {
   const intersectionObserver = new IntersectionObserver((entries) => {
     if (entries[0].intersectionRatio <= 0) return;
-    setPage(page+1)
+    if(searchText){
+      setSearchMoviePage(searchMoviePage+1)
+    } else {
+      setPage(page+1)
+    }
 
   });
   useEffect(() => {
