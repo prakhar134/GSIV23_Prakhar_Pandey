@@ -8,15 +8,22 @@ import "./List.css"
 const List = () => {
   const dispatch = useDispatch()
   const movies = useSelector((state) => state.movies?.movies);
+  const totalPages = useSelector((state) => state.movies?.totalPages);
   const [page, setPage] = useState(1)
   useEffect(() => {
+    if(page>=1){
+      getData()
+    }
+  }, [page])
+
+  function getData() {
     dispatch(fetchMovies(page));
-  }, [])
+  }
   
   return (
     <div className='container'>
       <Header/>
-      <Movies movies={movies} setPage={setPage}/>
+      <Movies movies={movies} page={page} totalPages={totalPages} setPage={setPage}/>
     </div>
   )
 }

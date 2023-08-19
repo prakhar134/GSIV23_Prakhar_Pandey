@@ -9,7 +9,7 @@ const initialState = {
     switch(action.type){
         case FETCH_MOVIES:
             let _state = {...state};
-            _state.movies = action.payload?.results
+            _state.movies = _state.movies.concat(action.payload?.results)
             _state.totalPages = action.payload?.total_pages
             return _state;
         default:
