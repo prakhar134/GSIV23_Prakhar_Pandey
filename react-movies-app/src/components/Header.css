@@ -26,3 +26,15 @@
 .header_title{
     font-size: 24px;
 }
+
+@media only screen and (max-width: 720px) {
+    .header_container {
+        padding: 0.5rem 0.5rem;
+    }
+    .searchBox{
+        width: 100%;
+    }
+    .input{
+        width: 95%;
+    }
+}

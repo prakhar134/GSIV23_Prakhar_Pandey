@@ -28,7 +28,7 @@ const Details = () => {
         </div>
         <div className='content'>
           <h2 className='content_heading'>{details?.title} {`(`}{details?.vote_average?.toFixed(1)}{`)`}</h2>
-          <p className='content_details'>{new Date(details?.release_date)?.getFullYear()} | {Math.floor(details?.runtime/60)} HH : {details?.runtime%60} MM | Director</p>
+          <p className='content_details'>{new Date(details?.release_date)?.getFullYear()} | {Math.floor(details?.runtime/60)}h {details?.runtime%60}m | Director</p>
           <p className='content_description'>Description: {details?.overview}</p>
         </div>
       </div>
