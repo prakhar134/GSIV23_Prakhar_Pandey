@@ -18,4 +18,5 @@ Step 4 - Run ```npm start``` to start the project. <br />
 ## Improvement that can be made - 
 1) Skeleton Loader to give a better UX as well as avoid CLS. <br />
 2) A better search experience by showing search results while typing. <br />
+4) Appropriate filter buttons to sort the movies according to the rating or revenue, etc. <br />
 3) Integrating SSR. <br />
