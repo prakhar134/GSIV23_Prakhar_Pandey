@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Movies from '../components/Movies'
 import {useDispatch, useSelector} from "react-redux"
-import { clearSearchMovies, fetchMovies, searchMovie } from '../actions/movieAction'
+import {fetchMovies, searchMovie } from '../actions/movieAction'
 import "./List.css"
 import { REMOVE_MOVIES, REMOVE_SEARCH_MOVIES } from '../actions/type'
 
