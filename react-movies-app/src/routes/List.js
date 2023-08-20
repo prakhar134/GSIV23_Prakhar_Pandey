@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Header from '../components/Header'
 import Movies from '../components/Movies'
 import {useDispatch, useSelector} from "react-redux"
 import { clearSearchMovies, fetchMovies, searchMovie } from '../actions/movieAction'
 import "./List.css"
+import { REMOVE_MOVIES, REMOVE_SEARCH_MOVIES } from '../actions/type'
 
 const List = () => {
   const dispatch = useDispatch()
@@ -27,9 +28,13 @@ const List = () => {
       removeSearchMovies()
     }
   }, [searchText])
+  useEffect(() => {
+    return () => {
+      dispatch({type: REMOVE_MOVIES})
+      dispatch({type: REMOVE_SEARCH_MOVIES})
+    }
+  }, [])
   
-  
-
   function getMovies() {
     dispatch(fetchMovies(page));
   }
@@ -40,7 +45,7 @@ const List = () => {
 
   function removeSearchMovies(){
     setSearchMoviePage(1);
-    dispatch(clearSearchMovies());
+    dispatch({type: REMOVE_SEARCH_MOVIES});
   }
   
   return (
@@ -53,9 +58,10 @@ const List = () => {
       />
       <Movies 
         movies={searchMovies.length ? searchMovies : movies}
-        page={page} totalPages={totalPages}
-        setPage={setPage}
+        page={page}
+        totalPages={totalPages}
         setSearchMoviePage={setSearchMoviePage}
+        setPage={setPage}
         searchText={searchText} 
         searchMoviePage={searchMoviePage}
       />

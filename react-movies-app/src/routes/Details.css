@@ -1,0 +1,28 @@
+.details{
+    padding: 0 3rem;
+}
+
+.details_container{
+    display: flex;
+    margin-top: 1rem;
+}
+
+.movie_image{
+    width: 300px;
+    .img{
+        width: 100%;
+    }
+}
+
+.content{
+    max-width: 500px;
+    padding-left: 1rem;
+}
+
+.content_heading, .content_details{
+    margin-bottom: 0.5rem;
+}
+
+.content_description{
+    color: #4A4A4A;
+}

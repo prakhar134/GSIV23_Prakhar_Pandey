@@ -6,9 +6,9 @@ const Movies = ({movies, page, setPage, totalPages, searchText, searchMoviePage,
   const intersectionObserver = new IntersectionObserver((entries) => {
     if (entries[0].intersectionRatio <= 0) return;
     if(searchText){
-      setSearchMoviePage(searchMoviePage+1)
+      setSearchMoviePage(searchMoviePage + 1);
     } else {
-      setPage(page+1)
+      setPage(page + 1);
     }
 
   });
@@ -17,12 +17,20 @@ const Movies = ({movies, page, setPage, totalPages, searchText, searchMoviePage,
       intersectionObserver.observe(document.getElementById('loadMoreData'))
     }
   }, [movies])
+
+  function endOfPages(){
+    if(searchText){
+      return searchMoviePage !== totalPages
+    } else {
+      return  page !== totalPages
+    }
+  }
   
   return (
     <div className='movie_list'>{movies.map((movie, idx) => (
       <React.Fragment key={movie.id}>
         <MovieCard movieData={movie} />
-        {(idx === movies.length - 2 && page !== totalPages) && <div id="loadMoreData"></div>}
+        {(idx === movies.length - 2 && endOfPages()) && <div id="loadMoreData"></div>}
       </React.Fragment>
     ))}
     </div>

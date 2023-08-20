@@ -1,9 +1,10 @@
-import { FETCH_MOVIES, REMOVE_SEARCH_MOVIES, SEARCH_MOVIE } from "../actions/type";
+import { FETCH_MOVIES, MOVIE_DETAILS, REMOVE_MOVIES, REMOVE_SEARCH_MOVIES, SEARCH_MOVIE } from "../actions/type";
 
 const initialState = {
     movies: [],
     totalPages: null,
-    searchMovies: []
+    searchMovies: [],
+    details: {}
   };
 
   const moviesReducer = (state = initialState, action) => {
@@ -20,6 +21,14 @@ const initialState = {
 
         case REMOVE_SEARCH_MOVIES:
           state.searchMovies = [];
+          return Object.assign({}, state);
+
+          case REMOVE_MOVIES:
+          state.movies = [];
+          return Object.assign({}, state);
+
+        case MOVIE_DETAILS:
+          state.details = action.payload;
           return Object.assign({}, state);
         
           default:
